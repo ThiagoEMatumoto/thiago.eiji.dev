@@ -45,6 +45,28 @@
   animation-delay: 1700ms;
 }
 
+/* ─── Scroll reveal ────────────────────────────────────────────────────── */
+
+/* Base: any reveal target gets a smooth transition. */
+[data-reveal] {
+  transition:
+    opacity 600ms ease-out,
+    transform 600ms ease-out;
+}
+
+/* `reveal-prep` is added by JS at boot to hide elements before they animate.
+   It is NEVER present in the SSR markup, so no-JS users see content immediately. */
+.reveal-prep {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* `is-revealed` is added by JS when the element enters the viewport. */
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-fade-in {
     opacity: 1;
@@ -53,6 +75,30 @@
 
   .animate-blink,
   [data-blink] {
+    animation: none;
+  }
+
+  /* Disable any reveal motion, force visible. */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* ─── View transitions (PT ↔ EN) ───────────────────────────────────────── */
+
+/* Smoother, shorter cross-fade than Astro's default 250ms. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
     animation: none;
   }
 }

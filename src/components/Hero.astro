@@ -23,6 +23,7 @@ const { t } = Astro.props
     <h1
       class="font-mono font-semibold tracking-[-0.04em] leading-[1.1] text-ink"
       style="font-size: clamp(40px, 8vw, 96px);"
+      transition:name="hero-statement"
     >
       <HeroTypewriter client:load text={t.statement} />
     </h1>
@@ -39,7 +40,7 @@ const { t } = Astro.props
         <li>
           <a
             href="mailto:thiagoeijimatumoto@gmail.com"
-            class="inline-flex items-center gap-1.5 text-mute transition-colors hover:text-coral"
+            class="inline-flex items-center gap-1.5 text-mute transition-colors duration-200 hover:text-coral"
             aria-label="Email"
           >
             <svg
@@ -65,7 +66,7 @@ const { t } = Astro.props
             href="https://github.com/ThiagoEMatumoto"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 text-mute transition-colors hover:text-coral"
+            class="inline-flex items-center gap-1.5 text-mute transition-colors duration-200 hover:text-coral"
             aria-label="GitHub"
           >
             <svg
@@ -88,7 +89,7 @@ const { t } = Astro.props
             href="https://www.linkedin.com/in/thiago-eiji-matumoto/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 text-mute transition-colors hover:text-coral"
+            class="inline-flex items-center gap-1.5 text-mute transition-colors duration-200 hover:text-coral"
             aria-label="LinkedIn"
           >
             <svg
@@ -110,7 +111,7 @@ const { t } = Astro.props
 
       <a
         href="#about"
-        class="text-[12px] text-mute transition-colors hover:text-coral"
+        class="text-[12px] text-mute transition-colors duration-200 hover:text-coral"
       >
         {t.scrollCue}
       </a>

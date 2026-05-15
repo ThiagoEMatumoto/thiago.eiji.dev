@@ -8,9 +8,14 @@ interface Props {
   number: string
   /** Lowercase mono label, e.g. "about". */
   label: string
+  /**
+   * If true, do NOT wrap the slot in a `[data-reveal]` block — caller manages
+   * its own reveal/stagger inside. Defaults to false (wrap as one reveal block).
+   */
+  contentSelfReveals?: boolean
 }
 
-const { id, number, label } = Astro.props
+const { id, number, label, contentSelfReveals = false } = Astro.props
 ---
 
 <section
@@ -22,8 +27,16 @@ const { id, number, label } = Astro.props
     class="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-[140px_1fr] md:gap-16"
   >
     <SectionLabel client:visible number={number} label={label} />
-    <div>
-      <slot />
-    </div>
+    {
+      contentSelfReveals ? (
+        <div>
+          <slot />
+        </div>
+      ) : (
+        <div data-reveal>
+          <slot />
+        </div>
+      )
+    }
   </div>
 </section>

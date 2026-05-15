@@ -9,11 +9,19 @@ interface Props {
 const { t } = Astro.props
 ---
 
-<EditorialSection id="how-i-work" number={t.number} label={t.label}>
-  <ul class="space-y-6 text-base leading-relaxed md:text-lg">
+<EditorialSection
+  id="how-i-work"
+  number={t.number}
+  label={t.label}
+  contentSelfReveals
+>
+  <ul
+    class="space-y-6 text-base leading-relaxed md:text-lg"
+    data-reveal-stagger
+  >
     {
       t.principles.map((p) => (
-        <li class="max-w-prose">
+        <li class="max-w-prose" data-reveal>
           <span class="text-coral" aria-hidden="true">
             →{' '}
           </span>
