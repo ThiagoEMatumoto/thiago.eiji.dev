@@ -1,0 +1,54 @@
+---
+interface Props {
+  text: string
+}
+const { text } = Astro.props
+---
+
+<div
+  class="spotlight relative flex h-full items-center overflow-hidden rounded-lg bg-[#1A1A1A] p-5 text-canvas"
+>
+  <div class="spotlight-glow pointer-events-none absolute inset-0"></div>
+  <p class="relative font-mono text-sm leading-relaxed">
+    {text}
+  </p>
+</div>
+
+<style>
+  .spotlight {
+    --mx: 30%;
+    --my: 50%;
+  }
+  .spotlight-glow {
+    background: radial-gradient(
+      circle 200px at var(--mx) var(--my),
+      rgba(233, 75, 45, 0.55) 0%,
+      rgba(233, 75, 45, 0.18) 35%,
+      transparent 70%
+    );
+    transition: opacity 300ms ease-out;
+  }
+</style>
+
+<script>
+  document
+    .querySelectorAll<HTMLElement>('.spotlight')
+    .forEach((card) => {
+      let raf = 0
+      let mx = 30
+      let my = 50
+
+      const apply = () => {
+        raf = 0
+        card.style.setProperty('--mx', `${mx.toFixed(2)}%`)
+        card.style.setProperty('--my', `${my.toFixed(2)}%`)
+      }
+
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect()
+        mx = ((e.clientX - r.left) / r.width) * 100
+        my = ((e.clientY - r.top) / r.height) * 100
+        if (!raf) raf = requestAnimationFrame(apply)
+      })
+    })
+</script>

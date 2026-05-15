@@ -1,0 +1,40 @@
+---
+interface Props {
+  value: string
+  caption: string
+}
+const { value, caption } = Astro.props
+---
+
+<div class="iso-wrap relative flex h-full items-center justify-center py-2">
+  <div
+    class="iso-card relative w-[78%] rounded-xl border border-coral/30 bg-gradient-to-br from-coral/40 via-coral/15 to-transparent p-4 text-center shadow-[0_18px_40px_-12px_rgba(233,75,45,0.4)] backdrop-blur-md"
+  >
+    <div class="font-mono text-2xl font-semibold text-ink md:text-3xl">
+      {value}
+    </div>
+    <div
+      class="mt-1 font-mono text-[10px] uppercase tracking-wider text-mute"
+    >
+      {caption}
+    </div>
+  </div>
+</div>
+
+<style>
+  .iso-card {
+    transform: rotateX(35deg) rotateZ(-25deg);
+    transform-style: preserve-3d;
+    transition: transform 400ms ease-out;
+  }
+  .iso-wrap:hover .iso-card {
+    transform: rotateX(20deg) rotateZ(-12deg);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .iso-card,
+    .iso-wrap:hover .iso-card {
+      transition: none;
+      transform: rotateX(20deg) rotateZ(-12deg);
+    }
+  }
+</style>

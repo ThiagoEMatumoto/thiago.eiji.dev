@@ -64,6 +64,21 @@ test.describe('landing smoke', () => {
     )
   })
 
+  test('components lab section renders in PT and EN', async ({ page }) => {
+    await page.goto('/')
+    const labPt = page.locator('#components-lab')
+    await labPt.scrollIntoViewIfNeeded()
+    await expect(labPt).toBeVisible()
+    await expect(labPt.locator('.lab-card')).toHaveCount(9)
+
+    await page.goto('/en/')
+    const labEn = page.locator('#components-lab')
+    await labEn.scrollIntoViewIfNeeded()
+    await expect(labEn).toBeVisible()
+    await expect(labEn.locator('.lab-card')).toHaveCount(9)
+    await expect(labEn).toContainText('9 components, all live')
+  })
+
   test('mobile baseline (375x667) — no horizontal overflow', async ({
     browser,
   }) => {

@@ -1,0 +1,76 @@
+---
+interface Props {
+  /** Total steps. */
+  total: number
+  /** 1-indexed current step (will be animated). */
+  current: number
+  /** Lowercase mono label rendered below. */
+  label: string
+}
+const { total, current, label } = Astro.props
+const bars = Array.from({ length: total }, (_, i) => {
+  const idx = i + 1
+  if (idx < current) return 'done' as const
+  if (idx === current) return 'active' as const
+  return 'todo' as const
+})
+---
+
+<div class="flex h-full flex-col justify-center gap-3">
+  <div
+    class="flex gap-1.5"
+    role="progressbar"
+    aria-valuenow={current}
+    aria-valuemin={1}
+    aria-valuemax={total}
+    aria-label={label}
+  >
+    {
+      bars.map((state) => (
+        <span class={`bar bar-${state} block h-1.5 flex-1 rounded-full`} />
+      ))
+    }
+  </div>
+  <div class="text-center font-mono text-[10px] uppercase tracking-wider text-mute">
+    {label}
+  </div>
+</div>
+
+<style>
+  .bar-done {
+    background: var(--color-coral);
+  }
+  .bar-todo {
+    background: rgba(26, 26, 26, 0.12);
+  }
+  .bar-active {
+    position: relative;
+    background: rgba(26, 26, 26, 0.12);
+    overflow: hidden;
+  }
+  .bar-active::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-coral) 50%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    animation: bar-slide 1.6s linear infinite;
+  }
+  @keyframes bar-slide {
+    to {
+      transform: translateX(100%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bar-active::after {
+      animation: none;
+      transform: translateX(0);
+      opacity: 0.6;
+    }
+  }
+</style>

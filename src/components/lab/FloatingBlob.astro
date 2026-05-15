@@ -1,0 +1,41 @@
+---
+// Floating gradient blob — pure CSS animation.
+---
+
+<div class="flex h-full items-center justify-center">
+  <div class="blob" aria-hidden="true"></div>
+</div>
+
+<style>
+  .blob {
+    width: 80px;
+    height: 80px;
+    border-radius: 22px;
+    background: linear-gradient(
+      135deg,
+      var(--color-coral) 0%,
+      var(--color-coral-warm) 100%
+    );
+    box-shadow:
+      0 18px 40px -10px rgba(233, 75, 45, 0.55),
+      0 4px 12px rgba(245, 184, 32, 0.35);
+    animation: blob-float 4.5s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  @keyframes blob-float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(3deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob {
+      animation: none;
+    }
+  }
+</style>

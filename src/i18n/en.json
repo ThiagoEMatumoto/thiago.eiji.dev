@@ -67,14 +67,31 @@
       }
     }
   },
-  "writing": {
+  "componentsLab": {
     "number": "04",
+    "label": "components lab",
+    "title": "9 components, all live, all built here.",
+    "subtitle": "Each one is direct proof of craft. Hover to see the interactions.",
+    "items": [
+      { "tag": "01", "name": "magnetic button", "cta": "hire me" },
+      { "tag": "02", "name": "animated counter · years coding", "caption": "years coding" },
+      { "tag": "03", "name": "syntax highlighted" },
+      { "tag": "04", "name": "isometric glassmorphism", "value": "99.9%", "caption": "uptime · last 12 months" },
+      { "tag": "05", "name": "spotlight card", "text": "cursor-following spotlight." },
+      { "tag": "06", "name": "floating gradient blob" },
+      { "tag": "07", "name": "animated theme toggle" },
+      { "tag": "08", "name": "cmd-k palette", "hint": "jump to section...", "active": { "label": "about", "tag": "// 01" }, "next": { "label": "contact", "tag": "// 06" } },
+      { "tag": "09", "name": "multi-step progress", "caption": "phase 4 of 6 · animated progress" }
+    ]
+  },
+  "writing": {
+    "number": "05",
     "label": "writing",
     "placeholder": "[ coming soon · stay tuned ]",
     "githubLink": "ideas and drafts on GitHub"
   },
   "contact": {
-    "number": "05",
+    "number": "06",
     "label": "contact",
     "links": [
       {

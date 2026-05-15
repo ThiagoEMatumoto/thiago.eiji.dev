@@ -1,0 +1,37 @@
+---
+interface Props {
+  hint: string
+  active: { label: string; tag: string }
+  next: { label: string; tag: string }
+}
+const { hint, active, next } = Astro.props
+---
+
+<div
+  class="flex h-full flex-col gap-2 rounded-lg border border-ink/15 bg-canvas/80 p-3 font-mono text-[12px] backdrop-blur-sm"
+>
+  <div
+    class="flex items-center gap-2 border-b border-ink/10 pb-2 text-mute"
+    aria-hidden="true"
+  >
+    <kbd
+      class="rounded bg-ink/10 px-1.5 py-0.5 font-mono text-[10px] text-ink"
+      >⌘K</kbd
+    >
+    <span>{hint}</span>
+  </div>
+  <ul class="space-y-1">
+    <li
+      class="flex items-center justify-between rounded bg-coral/15 px-2 py-1.5 text-ink"
+    >
+      <span>{active.label}</span>
+      <span class="text-mute">{active.tag}</span>
+    </li>
+    <li
+      class="flex items-center justify-between rounded px-2 py-1.5 text-mute hover:bg-ink/5"
+    >
+      <span>{next.label}</span>
+      <span>{next.tag}</span>
+    </li>
+  </ul>
+</div>
