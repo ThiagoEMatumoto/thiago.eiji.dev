@@ -1,0 +1,39 @@
+---
+import type { Locale } from '../i18n'
+
+interface Props {
+  /** Current active locale (controls which link is highlighted). */
+  locale: Locale
+}
+
+const { locale } = Astro.props
+
+const isPt = locale === 'pt'
+const isEn = locale === 'en'
+
+const activeClass = 'text-ink font-semibold'
+const inactiveClass = 'text-mute transition-colors hover:text-coral'
+---
+
+<nav
+  class="inline-flex items-center gap-2 text-xs"
+  aria-label={isPt ? 'Selecionar idioma' : 'Language switcher'}
+>
+  <a
+    href="/"
+    class={isPt ? activeClass : inactiveClass}
+    aria-current={isPt ? 'page' : undefined}
+    hreflang="pt"
+  >
+    PT
+  </a>
+  <span class="text-mute" aria-hidden="true">|</span>
+  <a
+    href="/en/"
+    class={isEn ? activeClass : inactiveClass}
+    aria-current={isEn ? 'page' : undefined}
+    hreflang="en"
+  >
+    EN
+  </a>
+</nav>

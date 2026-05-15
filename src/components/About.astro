@@ -1,17 +1,16 @@
 ---
 import EditorialSection from './EditorialSection.astro'
+import type { Translations } from '../i18n'
 
 interface Props {
-  paragraph?: string
+  t: Translations['about']
 }
 
-const {
-  paragraph = 'Engenheiro de produto full-stack. Construo aplicações ponta a ponta com TypeScript no front e Python no back. Acredito que código é meio — o produto que resolve problema real é o fim.',
-} = Astro.props
+const { t } = Astro.props
 ---
 
-<EditorialSection id="about" number="01" label="about">
+<EditorialSection id="about" number={t.number} label={t.label}>
   <p class="max-w-prose text-base leading-relaxed text-ink md:text-lg">
-    {paragraph}
+    {t.body}
   </p>
 </EditorialSection>

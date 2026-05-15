@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import { useTranslations } from '../i18n'
 
 interface Props {
   title?: string
@@ -8,14 +9,16 @@ interface Props {
   ogDescription?: string
 }
 
+const lang = Astro.currentLocale ?? 'pt'
+const t = useTranslations(lang)
+
 const {
-  title = 'Thiago Eiji Matumoto · Product Engineer',
-  description = 'Engenheiro de produto full-stack. TypeScript e Python. São Paulo, disponível para remoto.',
+  title = t.meta.title,
+  description = t.meta.description,
   ogTitle,
   ogDescription,
 } = Astro.props
 
-const lang = Astro.currentLocale ?? 'pt'
 const canonical = new URL(Astro.url.pathname, Astro.site).toString()
 const finalOgTitle = ogTitle ?? title
 const finalOgDescription = ogDescription ?? description

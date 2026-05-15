@@ -1,55 +1,24 @@
 ---
 import EditorialSection from './EditorialSection.astro'
-
-interface Principle {
-  statement: string
-  elaboration: string
-}
+import type { Translations } from '../i18n'
 
 interface Props {
-  principles?: Principle[]
-  label?: string
+  t: Translations['howIWork']
 }
 
-const {
-  label = 'how i work',
-  principles = [
-    {
-      statement: 'Produto primeiro.',
-      elaboration:
-        'Código é meio; o produto que resolve problema real é o fim.',
-    },
-    {
-      statement: 'Entregue pequeno, itere rápido.',
-      elaboration: 'Pronto em produção vence perfeito em PR.',
-    },
-    {
-      statement: 'Domine a stack inteira.',
-      elaboration: 'Do schema do banco à cor do botão.',
-    },
-    {
-      statement: 'Ferramentas modernas, disciplina clássica.',
-      elaboration: 'Dev assistido por IA com code review e testes.',
-    },
-    {
-      statement: 'Simples vence.',
-      elaboration:
-        'Tecnologia chata na espinha, ferramentas novas onde compensam.',
-    },
-  ],
-} = Astro.props
+const { t } = Astro.props
 ---
 
-<EditorialSection id="how-i-work" number="02" label={label}>
+<EditorialSection id="how-i-work" number={t.number} label={t.label}>
   <ul class="space-y-6 text-base leading-relaxed md:text-lg">
     {
-      principles.map((p) => (
+      t.principles.map((p) => (
         <li class="max-w-prose">
           <span class="text-coral" aria-hidden="true">
             →{' '}
           </span>
-          <span class="font-semibold text-ink">{p.statement}</span>{' '}
-          <span class="text-mute">{p.elaboration}</span>
+          <span class="font-semibold text-ink">{p.title}</span>{' '}
+          <span class="text-mute">{p.body}</span>
         </li>
       ))
     }

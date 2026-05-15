@@ -1,1 +1,103 @@
-{}
+{
+  "meta": {
+    "title": "Thiago Eiji Matumoto · Engenheiro de Produto",
+    "description": "Engenheiro de produto full-stack. TypeScript e Python. São Paulo, disponível para remoto."
+  },
+  "hero": {
+    "label": "[ thiago.eiji.dev ]",
+    "statement": "Construo produtos que funcionam.",
+    "subtitle": "Thiago Eiji Matumoto · São Paulo · disponível para remoto",
+    "scrollCue": "↓ continuar",
+    "links": {
+      "email": "email",
+      "github": "github",
+      "linkedin": "linkedin"
+    }
+  },
+  "about": {
+    "number": "01",
+    "label": "about",
+    "body": "Engenheiro de produto full-stack. Construo aplicações ponta a ponta com TypeScript no front e Python no back. Acredito que código é meio — o produto que resolve problema real é o fim."
+  },
+  "howIWork": {
+    "number": "02",
+    "label": "how i work",
+    "principles": [
+      {
+        "title": "Produto primeiro.",
+        "body": "Código é meio; o produto que resolve problema real é o fim."
+      },
+      {
+        "title": "Entregue pequeno, itere rápido.",
+        "body": "Pronto em produção vence perfeito em PR."
+      },
+      {
+        "title": "Domine a stack inteira.",
+        "body": "Do schema do banco à cor do botão."
+      },
+      {
+        "title": "Ferramentas modernas, disciplina clássica.",
+        "body": "Dev assistido por IA com code review e testes."
+      },
+      {
+        "title": "Simples vence.",
+        "body": "Tecnologia chata na espinha, ferramentas novas onde compensam."
+      }
+    ]
+  },
+  "stack": {
+    "number": "03",
+    "label": "stack",
+    "groups": {
+      "frontend": {
+        "title": "frontend",
+        "items": ["TypeScript", "React", "Astro", "Next.js", "Tailwind CSS", "Vite"]
+      },
+      "backend": {
+        "title": "backend",
+        "items": ["Python", "FastAPI", "Django", "Node.js", "PostgreSQL", "Redis"]
+      },
+      "tools": {
+        "title": "tools",
+        "items": ["Docker", "GitHub Actions", "AWS", "Vercel", "Claude Code", "Linear"]
+      }
+    }
+  },
+  "writing": {
+    "number": "04",
+    "label": "writing",
+    "placeholder": "[ em breve · stay tuned ]",
+    "githubLink": "ideias e drafts no GitHub"
+  },
+  "contact": {
+    "number": "05",
+    "label": "contact",
+    "links": [
+      {
+        "label": "email",
+        "display": "thiagoeijimatumoto@gmail.com",
+        "href": "mailto:thiagoeijimatumoto@gmail.com"
+      },
+      {
+        "label": "github",
+        "display": "@ThiagoEMatumoto",
+        "href": "https://github.com/ThiagoEMatumoto",
+        "external": true
+      },
+      {
+        "label": "linkedin",
+        "display": "thiago-eiji-matumoto",
+        "href": "https://www.linkedin.com/in/thiago-eiji-matumoto/",
+        "external": true
+      }
+    ]
+  },
+  "footer": {
+    "credit": "© 2026 Thiago Eiji Matumoto · feito com astro",
+    "lastUpdated": "última atualização 2026-05-15"
+  },
+  "langToggle": {
+    "switchTo": "EN",
+    "switchToLabel": "Mudar para inglês"
+  }
+}

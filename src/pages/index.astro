@@ -7,21 +7,18 @@ import Stack from '../components/Stack.astro'
 import Writing from '../components/Writing.astro'
 import Contact from '../components/Contact.astro'
 import Footer from '../components/Footer.astro'
+import { useTranslations, type Locale } from '../i18n'
+
+const locale: Locale = 'pt'
+const t = useTranslations(locale)
 ---
 
-<BaseLayout
-  title="Thiago Eiji Matumoto · Product Engineer"
-  description="Engenheiro de produto full-stack. TypeScript e Python. São Paulo, disponível para remoto."
->
-  <Hero
-    statement="Construo produtos que funcionam."
-    subtitle="Thiago Eiji Matumoto · São Paulo · disponível para remoto"
-    scrollCue="↓ continuar"
-  />
-  <About />
-  <HowIWork />
-  <Stack />
-  <Writing />
-  <Contact />
-  <Footer />
+<BaseLayout title={t.meta.title} description={t.meta.description}>
+  <Hero t={t.hero} />
+  <About t={t.about} />
+  <HowIWork t={t.howIWork} />
+  <Stack t={t.stack} />
+  <Writing t={t.writing} />
+  <Contact t={t.contact} />
+  <Footer t={t.footer} locale={locale} />
 </BaseLayout>

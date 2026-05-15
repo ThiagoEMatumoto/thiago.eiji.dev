@@ -1,44 +1,18 @@
 ---
 import EditorialSection from './EditorialSection.astro'
-
-interface Link {
-  label: string
-  display: string
-  href: string
-  external?: boolean
-}
+import type { Translations } from '../i18n'
 
 interface Props {
-  links?: Link[]
+  t: Translations['contact']
 }
 
-const {
-  links = [
-    {
-      label: 'email',
-      display: 'thiagoeijimatumoto@gmail.com',
-      href: 'mailto:thiagoeijimatumoto@gmail.com',
-    },
-    {
-      label: 'github',
-      display: '@ThiagoEMatumoto',
-      href: 'https://github.com/ThiagoEMatumoto',
-      external: true,
-    },
-    {
-      label: 'linkedin',
-      display: 'thiago-eiji-matumoto',
-      href: 'https://www.linkedin.com/in/thiago-eiji-matumoto/',
-      external: true,
-    },
-  ],
-} = Astro.props
+const { t } = Astro.props
 ---
 
-<EditorialSection id="contact" number="05" label="contact">
+<EditorialSection id="contact" number={t.number} label={t.label}>
   <ul class="space-y-3 font-mono text-base md:text-lg">
     {
-      links.map((link) => (
+      t.links.map((link) => (
         <li class="group flex items-baseline gap-3">
           <span class="text-mute">{link.label}</span>
           <span class="text-mute transition-transform group-hover:translate-x-1">

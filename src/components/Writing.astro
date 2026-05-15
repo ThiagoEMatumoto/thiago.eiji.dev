@@ -1,19 +1,16 @@
 ---
 import EditorialSection from './EditorialSection.astro'
+import type { Translations } from '../i18n'
 
 interface Props {
-  placeholder?: string
-  draftsLink?: string
+  t: Translations['writing']
 }
 
-const {
-  placeholder = '[ em breve · stay tuned ]',
-  draftsLink = 'ideias e drafts no GitHub',
-} = Astro.props
+const { t } = Astro.props
 ---
 
-<EditorialSection id="writing" number="04" label="writing">
-  <p class="font-mono italic text-mute">{placeholder}</p>
+<EditorialSection id="writing" number={t.number} label={t.label}>
+  <p class="font-mono italic text-mute">{t.placeholder}</p>
   <p class="mt-4 text-sm">
     <a
       href="https://github.com/ThiagoEMatumoto"
@@ -21,7 +18,7 @@ const {
       rel="noopener noreferrer"
       class="text-mute underline-offset-4 transition-colors hover:text-coral hover:underline"
     >
-      {draftsLink}
+      {t.githubLink}
     </a>
   </p>
 </EditorialSection>

@@ -7,52 +7,18 @@ import Stack from '../../components/Stack.astro'
 import Writing from '../../components/Writing.astro'
 import Contact from '../../components/Contact.astro'
 import Footer from '../../components/Footer.astro'
+import { useTranslations, type Locale } from '../../i18n'
 
-const aboutParagraph =
-  'Full-stack product engineer. I build end-to-end applications with TypeScript on the front and Python on the back. Code is a means; the product that solves a real problem is the end.'
-
-const principles = [
-  {
-    statement: 'Product first.',
-    elaboration: 'Code is a means; the product is the end.',
-  },
-  {
-    statement: 'Ship small, iterate fast.',
-    elaboration: 'Done in production beats perfect in PR.',
-  },
-  {
-    statement: 'Own the whole stack.',
-    elaboration: 'From DB schema to button color.',
-  },
-  {
-    statement: 'Modern tools, classic discipline.',
-    elaboration: 'AI-assisted dev with code review and tests.',
-  },
-  {
-    statement: 'Simple wins.',
-    elaboration: 'Boring tech for the spine, novel tools where they pay off.',
-  },
-]
+const locale: Locale = 'en'
+const t = useTranslations(locale)
 ---
 
-<BaseLayout
-  title="Thiago Eiji Matumoto · Product Engineer"
-  description="Product engineer. Full-stack with TypeScript and Python. São Paulo, available for remote."
->
-  <Hero
-    statement="I build products that work."
-    subtitle="Thiago Eiji Matumoto · São Paulo · available for remote"
-    scrollCue="↓ continue"
-  />
-  <About paragraph={aboutParagraph} />
-  <HowIWork label="how i work" principles={principles} />
-  <Stack />
-  <Writing
-    placeholder="[ coming soon · stay tuned ]"
-    draftsLink="ideas and drafts on GitHub"
-  />
-  <Contact />
-  <Footer
-    text="© 2026 Thiago Eiji Matumoto · built with astro · last updated 2026-05-15"
-  />
+<BaseLayout title={t.meta.title} description={t.meta.description}>
+  <Hero t={t.hero} />
+  <About t={t.about} />
+  <HowIWork t={t.howIWork} />
+  <Stack t={t.stack} />
+  <Writing t={t.writing} />
+  <Contact t={t.contact} />
+  <Footer t={t.footer} locale={locale} />
 </BaseLayout>

@@ -1,55 +1,17 @@
 ---
 import EditorialSection from './EditorialSection.astro'
-
-interface Group {
-  title: string
-  items: string[]
-}
+import type { Translations } from '../i18n'
 
 interface Props {
-  groups?: Group[]
+  t: Translations['stack']
 }
 
-const {
-  groups = [
-    {
-      title: 'frontend',
-      items: [
-        'TypeScript',
-        'React',
-        'Astro',
-        'Next.js',
-        'Tailwind CSS',
-        'Vite',
-      ],
-    },
-    {
-      title: 'backend',
-      items: [
-        'Python',
-        'FastAPI',
-        'Django',
-        'Node.js',
-        'PostgreSQL',
-        'Redis',
-      ],
-    },
-    {
-      title: 'tools',
-      items: [
-        'Docker',
-        'GitHub Actions',
-        'AWS',
-        'Vercel',
-        'Claude Code',
-        'Linear',
-      ],
-    },
-  ],
-} = Astro.props
+const { t } = Astro.props
+
+const groups = [t.groups.frontend, t.groups.backend, t.groups.tools]
 ---
 
-<EditorialSection id="stack" number="03" label="stack">
+<EditorialSection id="stack" number={t.number} label={t.label}>
   <div class="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8">
     {
       groups.map((group) => (
@@ -59,9 +21,7 @@ const {
           </h3>
           <ul class="space-y-1.5 font-mono text-sm">
             {group.items.map((item) => (
-              <li class="text-mute transition-colors hover:text-ink">
-                {item}
-              </li>
+              <li class="text-mute transition-colors hover:text-ink">{item}</li>
             ))}
           </ul>
         </div>
