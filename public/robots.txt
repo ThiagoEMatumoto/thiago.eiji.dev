@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thiago-eiji-dev.vercel.app/sitemap-index.xml

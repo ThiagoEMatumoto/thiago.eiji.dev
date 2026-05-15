@@ -1,7 +1,10 @@
 {
   "meta": {
     "title": "Thiago Eiji Matumoto · Product Engineer",
-    "description": "Full-stack product engineer. TypeScript and Python. São Paulo, available for remote."
+    "description": "Full-stack product engineer. TypeScript and Python. São Paulo, available for remote.",
+    "keywords": "product engineer, full-stack developer, typescript, python, são paulo, remote, react, astro",
+    "ogLocale": "en_US",
+    "jobTitle": "Product Engineer"
   },
   "hero": {
     "label": "[ thiago.eiji.dev ]",

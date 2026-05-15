@@ -10,7 +10,7 @@ interface Props {
   ogDescription?: string
 }
 
-const lang = Astro.currentLocale ?? 'pt'
+const lang = (Astro.currentLocale ?? 'pt') as 'pt' | 'en'
 const t = useTranslations(lang)
 
 const {
@@ -23,6 +23,39 @@ const {
 const canonical = new URL(Astro.url.pathname, Astro.site).toString()
 const finalOgTitle = ogTitle ?? title
 const finalOgDescription = ogDescription ?? description
+
+const ogImage = new URL('/og-image.png', Astro.site).toString()
+const homePtUrl = new URL('/', Astro.site).toString()
+const homeEnUrl = new URL('/en/', Astro.site).toString()
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Thiago Eiji Matumoto',
+  jobTitle: t.meta.jobTitle,
+  url: Astro.site?.toString(),
+  email: 'thiagoeijimatumoto@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'São Paulo',
+    addressCountry: 'BR',
+  },
+  sameAs: [
+    'https://github.com/ThiagoEMatumoto',
+    'https://www.linkedin.com/in/thiago-eiji-matumoto/',
+  ],
+  knowsAbout: [
+    'TypeScript',
+    'Python',
+    'React',
+    'Astro',
+    'Node.js',
+    'FastAPI',
+    'PostgreSQL',
+    'Full-stack development',
+    'Product engineering',
+  ],
+}
 ---
 
 <!doctype html>
@@ -32,22 +65,56 @@ const finalOgDescription = ogDescription ?? description
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#FAF7F2" />
+    <meta name="color-scheme" content="light" />
+
+    <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Thiago Eiji Matumoto" />
+    <meta name="keywords" content={t.meta.keywords} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
 
+    <!-- hreflang alternates -->
+    <link rel="alternate" hreflang="pt" href={homePtUrl} />
+    <link rel="alternate" hreflang="en" href={homeEnUrl} />
+    <link rel="alternate" hreflang="x-default" href={homePtUrl} />
+
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="profile" />
     <meta property="og:title" content={finalOgTitle} />
     <meta property="og:description" content={finalOgDescription} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Thiago Eiji Matumoto · thiago.eiji.dev" />
+    <meta property="og:locale" content={t.meta.ogLocale} />
+    <meta
+      property="og:locale:alternate"
+      content={lang === 'pt' ? 'en_US' : 'pt_BR'}
+    />
+    <meta property="og:site_name" content="thiago.eiji.dev" />
+    <meta property="profile:first_name" content="Thiago" />
+    <meta property="profile:last_name" content="Matumoto" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={finalOgTitle} />
     <meta name="twitter:description" content={finalOgDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Thiago Eiji Matumoto · thiago.eiji.dev" />
 
-    <title>{title}</title>
+    <!-- Sitemap hint -->
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href="/sitemap-index.xml"
+    />
+
+    <!-- Structured data: Person -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
     <ClientRouter />
     <script>
