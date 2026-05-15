@@ -1,0 +1,24 @@
+---
+import EditorialSection from './EditorialSection.astro'
+import type { Translations } from '../i18n'
+
+interface Props {
+  t: Translations['writing']
+}
+
+const { t } = Astro.props
+---
+
+<EditorialSection id="writing" number={t.number} label={t.label}>
+  <p class="font-mono italic text-mute">{t.placeholder}</p>
+  <p class="mt-4 text-sm">
+    <a
+      href="https://github.com/ThiagoEMatumoto"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-mute decoration-coral underline-offset-4 transition-colors duration-200 hover:text-coral hover:underline"
+    >
+      {t.githubLink}
+    </a>
+  </p>
+</EditorialSection>

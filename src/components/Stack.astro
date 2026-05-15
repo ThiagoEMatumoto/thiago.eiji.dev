@@ -1,0 +1,41 @@
+---
+import EditorialSection from './EditorialSection.astro'
+import type { Translations } from '../i18n'
+
+interface Props {
+  t: Translations['stack']
+}
+
+const { t } = Astro.props
+
+const groups = [t.groups.frontend, t.groups.backend, t.groups.tools]
+---
+
+<EditorialSection
+  id="stack"
+  number={t.number}
+  label={t.label}
+  contentSelfReveals
+>
+  <div
+    class="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8"
+    data-reveal-stagger
+  >
+    {
+      groups.map((group) => (
+        <div data-reveal>
+          <h3 class="mb-4 font-mono text-xs uppercase tracking-wider text-mute">
+            {group.title}
+          </h3>
+          <ul class="space-y-1.5 font-mono text-sm">
+            {group.items.map((item) => (
+              <li class="text-mute transition-colors duration-200 hover:text-ink">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</EditorialSection>

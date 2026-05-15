@@ -1,0 +1,22 @@
+---
+import LangToggle from './LangToggle.astro'
+import type { Locale, Translations } from '../i18n'
+
+interface Props {
+  t: Translations['footer']
+  locale: Locale
+}
+
+const { t, locale } = Astro.props
+---
+
+<footer
+  class="mx-auto flex max-w-5xl flex-col items-center gap-3 px-6 py-12 text-xs text-mute md:flex-row md:items-center md:justify-between md:px-12"
+>
+  <div class="text-center md:text-left">
+    <span>{t.credit}</span>
+    <span class="mx-1.5" aria-hidden="true">·</span>
+    <span>{t.lastUpdated}</span>
+  </div>
+  <LangToggle locale={locale} />
+</footer>

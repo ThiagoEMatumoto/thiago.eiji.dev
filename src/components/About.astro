@@ -1,0 +1,16 @@
+---
+import EditorialSection from './EditorialSection.astro'
+import type { Translations } from '../i18n'
+
+interface Props {
+  t: Translations['about']
+}
+
+const { t } = Astro.props
+---
+
+<EditorialSection id="about" number={t.number} label={t.label}>
+  <p class="max-w-prose text-base leading-relaxed text-ink md:text-lg">
+    {t.body}
+  </p>
+</EditorialSection>

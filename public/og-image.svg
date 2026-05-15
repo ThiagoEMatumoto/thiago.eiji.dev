@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      .canvas { fill: #FAF7F2; }
+      .ink { fill: #1A1A1A; }
+      .coral { fill: #E94B2D; }
+      .dim { fill: #1A1A1A; opacity: 0.55; }
+      .dim-low { fill: #1A1A1A; opacity: 0.5; }
+      text {
+        font-family: 'JetBrains Mono', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', monospace;
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" class="canvas" />
+
+  <!-- Top label -->
+  <text x="80" y="110" class="coral" font-size="22" font-weight="500" letter-spacing="0.04em">
+    [ thiago.eiji.dev ]
+  </text>
+
+  <!-- Main name -->
+  <text x="80" y="320" class="ink" font-size="88" font-weight="600" letter-spacing="-0.02em">
+    Thiago Eiji Matumoto
+  </text>
+
+  <!-- Statement -->
+  <text x="80" y="395" class="dim" font-size="26" font-weight="400" letter-spacing="0.01em">
+    Construo produtos que funcionam · I build products that work
+  </text>
+
+  <!-- Footer left -->
+  <text x="80" y="555" class="dim-low" font-size="20" font-weight="400" letter-spacing="0.04em">
+    São Paulo · Available for remote
+  </text>
+
+  <!-- Footer right (accent dot + role) -->
+  <circle cx="1085" cy="549" r="6" class="coral" />
+  <text x="1100" y="555" class="dim-low" font-size="20" font-weight="400" letter-spacing="0.04em">
+    Product Engineer
+  </text>
+</svg>

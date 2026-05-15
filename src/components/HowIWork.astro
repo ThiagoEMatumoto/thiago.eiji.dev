@@ -1,0 +1,34 @@
+---
+import EditorialSection from './EditorialSection.astro'
+import type { Translations } from '../i18n'
+
+interface Props {
+  t: Translations['howIWork']
+}
+
+const { t } = Astro.props
+---
+
+<EditorialSection
+  id="how-i-work"
+  number={t.number}
+  label={t.label}
+  contentSelfReveals
+>
+  <ul
+    class="space-y-6 text-base leading-relaxed md:text-lg"
+    data-reveal-stagger
+  >
+    {
+      t.principles.map((p) => (
+        <li class="max-w-prose" data-reveal>
+          <span class="text-coral" aria-hidden="true">
+            →{' '}
+          </span>
+          <span class="font-semibold text-ink">{p.title}</span>{' '}
+          <span class="text-mute">{p.body}</span>
+        </li>
+      ))
+    }
+  </ul>
+</EditorialSection>

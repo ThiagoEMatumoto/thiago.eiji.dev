@@ -1,16 +1,24 @@
 ---
-import '../../styles/global.css'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Hero from '../../components/Hero.astro'
+import About from '../../components/About.astro'
+import HowIWork from '../../components/HowIWork.astro'
+import Stack from '../../components/Stack.astro'
+import Writing from '../../components/Writing.astro'
+import Contact from '../../components/Contact.astro'
+import Footer from '../../components/Footer.astro'
+import { useTranslations, type Locale } from '../../i18n'
+
+const locale: Locale = 'en'
+const t = useTranslations(locale)
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Thiago Eiji Matumoto</title>
-  </head>
-  <body>
-    <h1>Thiago Eiji Matumoto</h1>
-  </body>
-</html>
+<BaseLayout title={t.meta.title} description={t.meta.description}>
+  <Hero t={t.hero} />
+  <About t={t.about} />
+  <HowIWork t={t.howIWork} />
+  <Stack t={t.stack} />
+  <Writing t={t.writing} />
+  <Contact t={t.contact} />
+  <Footer t={t.footer} locale={locale} />
+</BaseLayout>

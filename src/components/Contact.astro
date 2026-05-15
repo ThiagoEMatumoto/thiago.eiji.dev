@@ -1,0 +1,42 @@
+---
+import EditorialSection from './EditorialSection.astro'
+import type { Translations } from '../i18n'
+
+interface Props {
+  t: Translations['contact']
+}
+
+const { t } = Astro.props
+---
+
+<EditorialSection
+  id="contact"
+  number={t.number}
+  label={t.label}
+  contentSelfReveals
+>
+  <ul class="space-y-3 font-mono text-base md:text-lg" data-reveal-stagger>
+    {
+      t.links.map((link) => (
+        <li
+          class="group flex min-w-0 flex-wrap items-baseline gap-x-3 gap-y-1"
+          data-reveal
+          data-testid="contact-link"
+        >
+          <span class="text-mute">{link.label}</span>
+          <span class="text-mute transition-transform duration-200 group-hover:translate-x-1">
+            →
+          </span>
+          <a
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+            class="break-all text-ink transition-colors duration-200 group-hover:text-coral"
+          >
+            {link.display}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</EditorialSection>

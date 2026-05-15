@@ -1,1 +1,106 @@
-{}
+{
+  "meta": {
+    "title": "Thiago Eiji Matumoto · Product Engineer",
+    "description": "Full-stack product engineer. TypeScript and Python. São Paulo, available for remote.",
+    "keywords": "product engineer, full-stack developer, typescript, python, são paulo, remote, react, astro",
+    "ogLocale": "en_US",
+    "jobTitle": "Product Engineer"
+  },
+  "hero": {
+    "label": "[ thiago.eiji.dev ]",
+    "statement": "I build products that work.",
+    "subtitle": "Thiago Eiji Matumoto · São Paulo · available for remote",
+    "scrollCue": "↓ continue",
+    "links": {
+      "email": "email",
+      "github": "github",
+      "linkedin": "linkedin"
+    }
+  },
+  "about": {
+    "number": "01",
+    "label": "about",
+    "body": "Full-stack product engineer. I build end-to-end applications with TypeScript on the front and Python on the back. Code is a means; the product that solves a real problem is the end."
+  },
+  "howIWork": {
+    "number": "02",
+    "label": "how i work",
+    "principles": [
+      {
+        "title": "Product first.",
+        "body": "Code is a means; the product that solves a real problem is the end."
+      },
+      {
+        "title": "Ship small, iterate fast.",
+        "body": "Done in production beats perfect in PR."
+      },
+      {
+        "title": "Own the whole stack.",
+        "body": "From DB schema to button color."
+      },
+      {
+        "title": "Modern tools, classic discipline.",
+        "body": "AI-assisted dev with code review and tests."
+      },
+      {
+        "title": "Simple wins.",
+        "body": "Boring tech for the spine, novel tools where they pay off."
+      }
+    ]
+  },
+  "stack": {
+    "number": "03",
+    "label": "stack",
+    "groups": {
+      "frontend": {
+        "title": "frontend",
+        "items": ["TypeScript", "React", "Astro", "Next.js", "Tailwind CSS", "Vite"]
+      },
+      "backend": {
+        "title": "backend",
+        "items": ["Python", "FastAPI", "Django", "Node.js", "PostgreSQL", "Redis"]
+      },
+      "tools": {
+        "title": "tools",
+        "items": ["Docker", "GitHub Actions", "AWS", "Vercel", "Claude Code", "Linear"]
+      }
+    }
+  },
+  "writing": {
+    "number": "04",
+    "label": "writing",
+    "placeholder": "[ coming soon · stay tuned ]",
+    "githubLink": "ideas and drafts on GitHub"
+  },
+  "contact": {
+    "number": "05",
+    "label": "contact",
+    "links": [
+      {
+        "label": "email",
+        "display": "thiagoeijimatumoto@gmail.com",
+        "href": "mailto:thiagoeijimatumoto@gmail.com"
+      },
+      {
+        "label": "github",
+        "display": "@ThiagoEMatumoto",
+        "href": "https://github.com/ThiagoEMatumoto",
+        "external": true
+      },
+      {
+        "label": "linkedin",
+        "display": "thiago-eiji-matumoto",
+        "href": "https://www.linkedin.com/in/thiago-eiji-matumoto/",
+        "external": true
+      }
+    ]
+  },
+  "footer": {
+    "credit": "© 2026 Thiago Eiji Matumoto · built with astro",
+    "lastUpdated": "last updated 2026-05-15"
+  },
+  "langToggle": {
+    "switchTo": "PT",
+    "switchToLabel": "Switch to Portuguese"
+  }
+}
