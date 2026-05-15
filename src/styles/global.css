@@ -1,2 +1,64 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/jetbrains-mono';
+
+@theme {
+  /* Color tokens */
+  --color-canvas: #faf7f2;
+  --color-ink: #1a1a1a;
+  --color-coral: #e94b2d;
+  --color-mute: rgba(26, 26, 26, 0.55);
+
+  /* Font family */
+  --font-mono:
+    'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  /* Animation */
+  --animate-blink: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero subtitle + icons fade in after typewriter finishes (~1700ms in JS path) */
+.hero-fade-in {
+  opacity: 0;
+  animation: hero-fade-up 600ms ease-out forwards;
+  animation-delay: 1700ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-in {
+    opacity: 1;
+    animation: none;
+  }
+
+  .animate-blink,
+  [data-blink] {
+    animation: none;
+  }
+}
+
+html,
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
