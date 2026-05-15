@@ -124,6 +124,9 @@ const personSchema = {
   <body
     class="bg-canvas text-ink font-mono antialiased min-h-screen selection:bg-coral selection:text-canvas"
   >
-    <slot />
+    <div class="bg-dot-grid" aria-hidden="true"></div>
+    <main>
+      <slot />
+    </main>
   </body>
 </html>

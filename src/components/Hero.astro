@@ -1,5 +1,6 @@
 ---
 import HeroTypewriter from './HeroTypewriter.tsx'
+import HeroScene from './HeroScene.tsx'
 import type { Translations } from '../i18n'
 
 interface Props {
@@ -18,15 +19,30 @@ const { t } = Astro.props
     <span class="text-[11px] tracking-tight text-mute">{t.label}</span>
   </header>
 
-  {/* Centered statement */}
-  <div class="flex flex-1 items-center">
+  {/* Centered statement + 3D scene side-by-side on md+ */}
+  <div
+    class="grid flex-1 items-center gap-8 md:grid-cols-[1.2fr_1fr] md:gap-12"
+  >
+    {/* Left column: statement (always first in DOM for screen readers) */}
     <h1
       class="font-mono font-semibold tracking-[-0.04em] leading-[1.1] text-ink"
       style="font-size: clamp(40px, 8vw, 96px);"
       transition:name="hero-statement"
     >
-      <HeroTypewriter client:load text={t.statement} />
+      <HeroTypewriter
+        client:load
+        text={t.statement}
+        accent={t.accent}
+      />
     </h1>
+
+    {/* Right column: three.js scene (lazy-loaded once visible) */}
+    <div
+      class="h-[280px] w-full md:h-[480px]"
+      aria-hidden="true"
+    >
+      <HeroScene client:visible />
+    </div>
   </div>
 
   {/* Subtitle + footer */}

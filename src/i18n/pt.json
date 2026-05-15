@@ -8,7 +8,8 @@
   },
   "hero": {
     "label": "[ thiago.eiji.dev ]",
-    "statement": "Construo produtos que funcionam.",
+    "statement": "Construo {{accent}} que funcionam.",
+    "accent": "produtos",
     "subtitle": "Thiago Eiji Matumoto · São Paulo · disponível para remoto",
     "scrollCue": "↓ continuar",
     "links": {
