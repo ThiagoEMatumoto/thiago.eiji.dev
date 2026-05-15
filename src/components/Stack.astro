@@ -1,0 +1,71 @@
+---
+import EditorialSection from './EditorialSection.astro'
+
+interface Group {
+  title: string
+  items: string[]
+}
+
+interface Props {
+  groups?: Group[]
+}
+
+const {
+  groups = [
+    {
+      title: 'frontend',
+      items: [
+        'TypeScript',
+        'React',
+        'Astro',
+        'Next.js',
+        'Tailwind CSS',
+        'Vite',
+      ],
+    },
+    {
+      title: 'backend',
+      items: [
+        'Python',
+        'FastAPI',
+        'Django',
+        'Node.js',
+        'PostgreSQL',
+        'Redis',
+      ],
+    },
+    {
+      title: 'tools',
+      items: [
+        'Docker',
+        'GitHub Actions',
+        'AWS',
+        'Vercel',
+        'Claude Code',
+        'Linear',
+      ],
+    },
+  ],
+} = Astro.props
+---
+
+<EditorialSection id="stack" number="03" label="stack">
+  <div class="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8">
+    {
+      groups.map((group) => (
+        <div>
+          <h3 class="mb-4 font-mono text-xs uppercase tracking-wider text-mute">
+            {group.title}
+          </h3>
+          <ul class="space-y-1.5 font-mono text-sm">
+            {group.items.map((item) => (
+              <li class="text-mute transition-colors hover:text-ink">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</EditorialSection>

@@ -1,0 +1,15 @@
+---
+interface Props {
+  text?: string
+}
+
+const {
+  text = '© 2026 Thiago Eiji Matumoto · built with astro · last updated 2026-05-15',
+} = Astro.props
+---
+
+<footer
+  class="mx-auto max-w-5xl px-6 py-12 text-center text-xs text-mute md:px-12 md:text-left"
+>
+  {text}
+</footer>

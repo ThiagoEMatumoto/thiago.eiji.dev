@@ -1,0 +1,17 @@
+---
+import EditorialSection from './EditorialSection.astro'
+
+interface Props {
+  paragraph?: string
+}
+
+const {
+  paragraph = 'Engenheiro de produto full-stack. Construo aplicações ponta a ponta com TypeScript no front e Python no back. Acredito que código é meio — o produto que resolve problema real é o fim.',
+} = Astro.props
+---
+
+<EditorialSection id="about" number="01" label="about">
+  <p class="max-w-prose text-base leading-relaxed text-ink md:text-lg">
+    {paragraph}
+  </p>
+</EditorialSection>
