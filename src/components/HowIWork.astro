@@ -15,20 +15,110 @@ const { t } = Astro.props
   label={t.label}
   contentSelfReveals
 >
-  <ul
-    class="space-y-6 text-base leading-relaxed md:text-lg"
+  <div
+    class="principle-grid grid grid-cols-1 gap-4 md:grid-cols-2"
     data-reveal-stagger
   >
     {
-      t.principles.map((p) => (
-        <li class="max-w-prose" data-reveal>
-          <span class="text-coral" aria-hidden="true">
-            →{' '}
+      t.principles.map((p, i) => (
+        <article
+          class={`principle-card${i === t.principles.length - 1 ? ' principle-card--wide' : ''}`}
+          data-reveal
+        >
+          <span class="principle-glyph" aria-hidden="true">
+            {p.glyph}
           </span>
-          <span class="font-semibold text-ink">{p.title}</span>{' '}
-          <span class="text-mute">{p.body}</span>
-        </li>
+          <h3 class="principle-title">{p.title}</h3>
+          <p class="principle-body">{p.body}</p>
+        </article>
       ))
     }
-  </ul>
+  </div>
 </EditorialSection>
+
+<style>
+  .principle-card {
+    position: relative;
+    padding: 1.25rem 1.25rem 1.1rem;
+    border: 1px solid rgba(26, 26, 26, 0.12);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition:
+      border-color 300ms ease-out,
+      transform 200ms ease-out;
+    --mx: 50%;
+    --my: 50%;
+  }
+
+  /* Coral side bar — animates in on hover */
+  .principle-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-coral, #e94b2d);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .principle-card:hover {
+    border-color: var(--color-coral, #e94b2d);
+  }
+
+  .principle-card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .principle-glyph {
+    display: block;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--color-coral, #e94b2d);
+    margin-bottom: 0.85rem;
+  }
+
+  .principle-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-ink, #1a1a1a);
+    margin-bottom: 0.4rem;
+    line-height: 1.35;
+  }
+
+  .principle-body {
+    font-size: 12px;
+    color: var(--color-mute, rgba(26, 26, 26, 0.55));
+    line-height: 1.55;
+  }
+
+  /* Last card spans both columns on md+ for a 2-2-1-wide layout */
+  @media (min-width: 768px) {
+    .principle-card--wide {
+      grid-column: span 2;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .principle-card {
+      transform: none !important;
+      transition: none !important;
+    }
+    .principle-card::before {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  import { applyTilt } from './lab/CardTilt'
+
+  const cards = document.querySelectorAll<HTMLElement>('.principle-card')
+  cards.forEach((c) => applyTilt(c, 4))
+</script>

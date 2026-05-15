@@ -28,22 +28,27 @@
     "label": "how i work",
     "principles": [
       {
+        "glyph": "→",
         "title": "Produto primeiro.",
         "body": "Código é meio; o produto que resolve problema real é o fim."
       },
       {
+        "glyph": "⚡",
         "title": "Entregue pequeno, itere rápido.",
         "body": "Pronto em produção vence perfeito em PR."
       },
       {
+        "glyph": "⊞",
         "title": "Domine a stack inteira.",
         "body": "Do schema do banco à cor do botão."
       },
       {
+        "glyph": "◇",
         "title": "Ferramentas modernas, disciplina clássica.",
         "body": "Dev assistido por IA com code review e testes."
       },
       {
+        "glyph": "∼",
         "title": "Simples vence.",
         "body": "Tecnologia chata na espinha, ferramentas novas onde compensam."
       }
@@ -52,20 +57,21 @@
   "stack": {
     "number": "03",
     "label": "stack",
-    "groups": {
-      "frontend": {
-        "title": "frontend",
-        "items": ["TypeScript", "React", "Astro", "Next.js", "Tailwind CSS", "Vite"]
-      },
-      "backend": {
-        "title": "backend",
-        "items": ["Python", "FastAPI", "Django", "Node.js", "PostgreSQL", "Redis"]
-      },
-      "tools": {
-        "title": "tools",
-        "items": ["Docker", "GitHub Actions", "AWS", "Vercel", "Claude Code", "Linear"]
-      }
-    }
+    "sinceLabel": "desde",
+    "items": [
+      { "name": "TypeScript", "since": "2021", "level": 5 },
+      { "name": "React", "since": "2021", "level": 5 },
+      { "name": "Astro", "since": "2024", "level": 4 },
+      { "name": "Tailwind", "since": "2022", "level": 4 },
+      { "name": "Python", "since": "2020", "level": 5 },
+      { "name": "FastAPI", "since": "2022", "level": 4 },
+      { "name": "Django", "since": "2021", "level": 4 },
+      { "name": "PostgreSQL", "since": "2021", "level": 3 },
+      { "name": "Docker", "since": "2022", "level": 3 },
+      { "name": "AWS", "since": "2023", "level": 3 },
+      { "name": "GitHub Actions", "since": "2022", "level": 4 },
+      { "name": "Claude Code", "since": "2025", "level": 3 }
+    ]
   },
   "componentsLab": {
     "number": "04",

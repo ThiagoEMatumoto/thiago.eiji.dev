@@ -8,7 +8,21 @@ interface Props {
 
 const { t } = Astro.props
 
-const groups = [t.groups.frontend, t.groups.backend, t.groups.tools]
+/** Map proficiency level (1-5) to bar fill width as percentage. */
+const levelToWidth = (level: number): string => {
+  switch (level) {
+    case 5:
+      return '95%'
+    case 4:
+      return '75%'
+    case 3:
+      return '55%'
+    case 2:
+      return '35%'
+    default:
+      return '15%'
+  }
+}
 ---
 
 <EditorialSection
@@ -18,24 +32,112 @@ const groups = [t.groups.frontend, t.groups.backend, t.groups.tools]
   contentSelfReveals
 >
   <div
-    class="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8"
+    class="stack-grid grid grid-cols-2 gap-3 md:grid-cols-4"
     data-reveal-stagger
   >
     {
-      groups.map((group) => (
-        <div data-reveal>
-          <h3 class="mb-4 font-mono text-xs uppercase tracking-wider text-mute">
-            {group.title}
-          </h3>
-          <ul class="space-y-1.5 font-mono text-sm">
-            {group.items.map((item) => (
-              <li class="text-mute transition-colors duration-200 hover:text-ink">
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+      t.items.map((item) => (
+        <article class="stack-card" data-reveal>
+          <h3 class="stack-name">{item.name}</h3>
+          <p class="stack-since">
+            {t.sinceLabel} {item.since}
+          </p>
+          <div
+            class="stack-bar"
+            role="meter"
+            aria-valuemin="0"
+            aria-valuemax="5"
+            aria-valuenow={item.level}
+            aria-label={`${item.name} proficiency`}
+          >
+            <span
+              class="stack-bar-fill"
+              style={`--bar-width: ${levelToWidth(item.level)}`}
+            />
+          </div>
+        </article>
       ))
     }
   </div>
 </EditorialSection>
+
+<style>
+  .stack-card {
+    position: relative;
+    padding: 1rem;
+    border: 1px solid rgba(26, 26, 26, 0.12);
+    border-radius: 12px;
+    background: #ffffff;
+    transform-style: preserve-3d;
+    transition:
+      border-color 250ms ease-out,
+      transform 200ms ease-out;
+    --mx: 50%;
+    --my: 50%;
+  }
+
+  .stack-card:hover {
+    border-color: var(--color-coral, #e94b2d);
+    transform: translateY(-2px);
+  }
+
+  .stack-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-ink, #1a1a1a);
+    line-height: 1.2;
+  }
+
+  .stack-since {
+    margin-top: 0.15rem;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-mute, rgba(26, 26, 26, 0.55));
+    letter-spacing: 0.04em;
+  }
+
+  .stack-bar {
+    margin-top: 0.75rem;
+    width: 100%;
+    height: 2px;
+    background: rgba(26, 26, 26, 0.12);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .stack-bar-fill {
+    display: block;
+    height: 100%;
+    width: var(--bar-width, 0%);
+    background: var(--color-coral, #e94b2d);
+    border-radius: 1px;
+    transform-origin: left;
+    animation: stack-bar-grow 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes stack-bar-grow {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stack-card {
+      transform: none !important;
+      transition: none !important;
+    }
+    .stack-bar-fill {
+      animation: none !important;
+    }
+  }
+</style>
+
+<script>
+  import { applyTilt } from './lab/CardTilt'
+
+  const cards = document.querySelectorAll<HTMLElement>('.stack-card')
+  cards.forEach((c) => applyTilt(c, 4))
+</script>
