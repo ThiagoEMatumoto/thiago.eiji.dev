@@ -8,7 +8,8 @@
   },
   "hero": {
     "label": "[ thiago.eiji.dev ]",
-    "statement": "Construo produtos que funcionam.",
+    "statement": "Construo {{accent}} que funcionam.",
+    "accent": "produtos",
     "subtitle": "Thiago Eiji Matumoto · São Paulo · disponível para remoto",
     "scrollCue": "↓ continuar",
     "links": {
@@ -27,22 +28,27 @@
     "label": "how i work",
     "principles": [
       {
+        "glyph": "→",
         "title": "Produto primeiro.",
         "body": "Código é meio; o produto que resolve problema real é o fim."
       },
       {
+        "glyph": "⚡",
         "title": "Entregue pequeno, itere rápido.",
         "body": "Pronto em produção vence perfeito em PR."
       },
       {
+        "glyph": "⊞",
         "title": "Domine a stack inteira.",
         "body": "Do schema do banco à cor do botão."
       },
       {
+        "glyph": "◇",
         "title": "Ferramentas modernas, disciplina clássica.",
         "body": "Dev assistido por IA com code review e testes."
       },
       {
+        "glyph": "∼",
         "title": "Simples vence.",
         "body": "Tecnologia chata na espinha, ferramentas novas onde compensam."
       }
@@ -51,29 +57,47 @@
   "stack": {
     "number": "03",
     "label": "stack",
-    "groups": {
-      "frontend": {
-        "title": "frontend",
-        "items": ["TypeScript", "React", "Astro", "Next.js", "Tailwind CSS", "Vite"]
-      },
-      "backend": {
-        "title": "backend",
-        "items": ["Python", "FastAPI", "Django", "Node.js", "PostgreSQL", "Redis"]
-      },
-      "tools": {
-        "title": "tools",
-        "items": ["Docker", "GitHub Actions", "AWS", "Vercel", "Claude Code", "Linear"]
-      }
-    }
+    "sinceLabel": "desde",
+    "items": [
+      { "name": "TypeScript", "since": "2021", "level": 5 },
+      { "name": "React", "since": "2021", "level": 5 },
+      { "name": "Astro", "since": "2024", "level": 4 },
+      { "name": "Tailwind", "since": "2022", "level": 4 },
+      { "name": "Python", "since": "2020", "level": 5 },
+      { "name": "FastAPI", "since": "2022", "level": 4 },
+      { "name": "Django", "since": "2021", "level": 4 },
+      { "name": "PostgreSQL", "since": "2021", "level": 3 },
+      { "name": "Docker", "since": "2022", "level": 3 },
+      { "name": "AWS", "since": "2023", "level": 3 },
+      { "name": "GitHub Actions", "since": "2022", "level": 4 },
+      { "name": "Claude Code", "since": "2025", "level": 3 }
+    ]
+  },
+  "componentsLab": {
+    "number": "04",
+    "label": "components lab",
+    "title": "9 componentes, todos vivos, todos feitos aqui.",
+    "subtitle": "Cada um é prova direta de craft. Hover pra ver as interações.",
+    "items": [
+      { "tag": "01", "name": "magnetic button", "cta": "hire me" },
+      { "tag": "02", "name": "animated counter · anos coding", "caption": "anos coding" },
+      { "tag": "03", "name": "syntax highlighted" },
+      { "tag": "04", "name": "isometric glassmorphism", "value": "99.9%", "caption": "uptime · últimos 12 meses" },
+      { "tag": "05", "name": "spotlight card", "text": "spotlight que segue o cursor." },
+      { "tag": "06", "name": "floating gradient blob" },
+      { "tag": "07", "name": "animated theme toggle" },
+      { "tag": "08", "name": "cmd-k palette", "hint": "pular para seção...", "active": { "label": "about", "tag": "// 01" }, "next": { "label": "contact", "tag": "// 06" } },
+      { "tag": "09", "name": "multi-step progress", "caption": "fase 4 de 6 · animated progress" }
+    ]
   },
   "writing": {
-    "number": "04",
+    "number": "05",
     "label": "writing",
     "placeholder": "[ em breve · stay tuned ]",
     "githubLink": "ideias e drafts no GitHub"
   },
   "contact": {
-    "number": "05",
+    "number": "06",
     "label": "contact",
     "links": [
       {

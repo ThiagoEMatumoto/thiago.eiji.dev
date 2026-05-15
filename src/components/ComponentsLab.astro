@@ -1,0 +1,185 @@
+---
+import EditorialSection from './EditorialSection.astro'
+import MagneticButton from './lab/MagneticButton.astro'
+import AnimatedCounter from './lab/AnimatedCounter.tsx'
+import CodeBlock from './lab/CodeBlock.astro'
+import GlassmorphismStat from './lab/GlassmorphismStat.astro'
+import SpotlightCard from './lab/SpotlightCard.astro'
+import FloatingBlob from './lab/FloatingBlob.astro'
+import ThemeToggle from './lab/ThemeToggle.astro'
+import CmdPalette from './lab/CmdPalette.astro'
+import ProgressSteps from './lab/ProgressSteps.astro'
+import type { Translations } from '../i18n'
+
+interface Props {
+  t: Translations['componentsLab']
+}
+
+const { t } = Astro.props
+const items = t.items
+---
+
+<EditorialSection
+  id="components-lab"
+  number={t.number}
+  label={t.label}
+  contentSelfReveals
+>
+  <div class="space-y-10" data-reveal-stagger>
+    <header data-reveal class="max-w-2xl">
+      <h2 class="text-2xl font-medium leading-snug text-ink md:text-3xl">
+        {t.title}
+      </h2>
+      <p class="mt-3 font-mono text-sm text-mute">{t.subtitle}</p>
+    </header>
+
+    <div class="lab-grid grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+      <article class="lab-card" data-reveal>
+        <span class="lab-tag">{items[0].tag}</span>
+        <div class="lab-demo"><MagneticButton label={items[0].cta} /></div>
+        <span class="lab-name">{items[0].name}</span>
+      </article>
+
+      <article class="lab-card" data-reveal>
+        <span class="lab-tag">{items[1].tag}</span>
+        <div class="lab-demo">
+          <AnimatedCounter
+            client:visible
+            value={5}
+            suffix="+"
+            label={items[1].caption}
+          />
+        </div>
+        <span class="lab-name">{items[1].name}</span>
+      </article>
+
+      <article class="lab-card" data-reveal>
+        <span class="lab-tag">{items[2].tag}</span>
+        <div class="lab-demo"><CodeBlock /></div>
+        <span class="lab-name">{items[2].name}</span>
+      </article>
+
+      <article class="lab-card" data-reveal>
+        <span class="lab-tag">{items[3].tag}</span>
+        <div class="lab-demo">
+          <GlassmorphismStat value={items[3].value} caption={items[3].caption} />
+        </div>
+        <span class="lab-name">{items[3].name}</span>
+      </article>
+
+      <article class="lab-card" data-reveal>
+        <span class="lab-tag">{items[4].tag}</span>
+        <div class="lab-demo"><SpotlightCard text={items[4].text} /></div>
+        <span class="lab-name">{items[4].name}</span>
+      </article>
+
+      <article class="lab-card" data-reveal>
+        <span class="lab-tag">{items[5].tag}</span>
+        <div class="lab-demo"><FloatingBlob /></div>
+        <span class="lab-name">{items[5].name}</span>
+      </article>
+
+      <article class="lab-card" data-reveal>
+        <span class="lab-tag">{items[6].tag}</span>
+        <div class="lab-demo"><ThemeToggle ariaLabel={items[6].name} /></div>
+        <span class="lab-name">{items[6].name}</span>
+      </article>
+
+      <article class="lab-card" data-reveal>
+        <span class="lab-tag">{items[7].tag}</span>
+        <div class="lab-demo">
+          <CmdPalette
+            hint={items[7].hint}
+            active={items[7].active}
+            next={items[7].next}
+          />
+        </div>
+        <span class="lab-name">{items[7].name}</span>
+      </article>
+
+      <article class="lab-card" data-reveal>
+        <span class="lab-tag">{items[8].tag}</span>
+        <div class="lab-demo">
+          <ProgressSteps
+            total={6}
+            current={4}
+            label={items[8].caption}
+          />
+        </div>
+        <span class="lab-name">{items[8].name}</span>
+      </article>
+    </div>
+  </div>
+</EditorialSection>
+
+<style>
+  .lab-card {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 200px;
+    padding: 1rem 1rem 0.85rem;
+    border: 1px solid rgba(26, 26, 26, 0.12);
+    border-radius: 14px;
+    background: rgba(250, 247, 242, 0.55);
+    backdrop-filter: blur(6px);
+    transform-style: preserve-3d;
+    --mx: 50%;
+    --my: 50%;
+  }
+
+  .lab-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background: radial-gradient(
+      circle 220px at var(--mx) var(--my),
+      rgba(233, 75, 45, 0.08) 0%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 250ms ease-out;
+    pointer-events: none;
+  }
+
+  .lab-card:hover::before {
+    opacity: 1;
+  }
+
+  .lab-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-coral);
+    letter-spacing: 0.06em;
+  }
+
+  .lab-demo {
+    min-height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.6rem 0;
+  }
+
+  .lab-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-mute);
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lab-card {
+      transform: none !important;
+    }
+  }
+</style>
+
+<script>
+  import { applyTilt } from './lab/CardTilt'
+
+  const cards = document.querySelectorAll<HTMLElement>('.lab-card')
+  cards.forEach((c) => applyTilt(c, 5))
+</script>

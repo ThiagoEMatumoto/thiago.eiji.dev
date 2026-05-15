@@ -1,0 +1,43 @@
+---
+/**
+ * Geometric SVG section divider: line · dot (coral) · line.
+ * Decorative — `aria-hidden`, no DOM impact for AT.
+ */
+---
+
+<div class="section-divider" aria-hidden="true">
+  <svg width="60" height="20" viewBox="0 0 60 20" role="presentation">
+    <line
+      x1="0"
+      y1="10"
+      x2="20"
+      y2="10"
+      stroke="currentColor"
+      stroke-width="1"
+      opacity="0.3"></line>
+    <circle cx="30" cy="10" r="3" fill="var(--color-coral, #e94b2d)"></circle>
+    <line
+      x1="40"
+      y1="10"
+      x2="60"
+      y2="10"
+      stroke="currentColor"
+      stroke-width="1"
+      opacity="0.3"></line>
+  </svg>
+</div>
+
+<style>
+  .section-divider {
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--color-ink, #1a1a1a);
+    opacity: 0.5;
+    position: relative;
+    z-index: 1;
+  }
+  .section-divider svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+</style>

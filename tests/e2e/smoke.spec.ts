@@ -64,6 +64,43 @@ test.describe('landing smoke', () => {
     )
   })
 
+  test('components lab section renders in PT and EN', async ({ page }) => {
+    await page.goto('/')
+    const labPt = page.locator('#components-lab')
+    await labPt.scrollIntoViewIfNeeded()
+    await expect(labPt).toBeVisible()
+    await expect(labPt.locator('.lab-card')).toHaveCount(9)
+
+    await page.goto('/en/')
+    const labEn = page.locator('#components-lab')
+    await labEn.scrollIntoViewIfNeeded()
+    await expect(labEn).toBeVisible()
+    await expect(labEn.locator('.lab-card')).toHaveCount(9)
+    await expect(labEn).toContainText('9 components, all live')
+  })
+
+  test('stack and how-i-work render as cards (PT + EN)', async ({ page }) => {
+    await page.goto('/')
+    const stackPt = page.locator('#stack')
+    await stackPt.scrollIntoViewIfNeeded()
+    await expect(stackPt.locator('.stack-card')).toHaveCount(12)
+    await expect(stackPt).toContainText('desde 2021')
+
+    const howPt = page.locator('#how-i-work')
+    await howPt.scrollIntoViewIfNeeded()
+    await expect(howPt.locator('.principle-card')).toHaveCount(5)
+
+    await page.goto('/en/')
+    const stackEn = page.locator('#stack')
+    await stackEn.scrollIntoViewIfNeeded()
+    await expect(stackEn.locator('.stack-card')).toHaveCount(12)
+    await expect(stackEn).toContainText('since 2021')
+
+    const howEn = page.locator('#how-i-work')
+    await howEn.scrollIntoViewIfNeeded()
+    await expect(howEn.locator('.principle-card')).toHaveCount(5)
+  })
+
   test('mobile baseline (375x667) — no horizontal overflow', async ({
     browser,
   }) => {
